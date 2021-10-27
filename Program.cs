@@ -42,31 +42,20 @@ namespace Project_for_Dad
         {
 
             var rand = new Random();
-            var skillCount = Enum.GetNames(typeof(skills)).Length;
-            var skillInt = rand.Next(skillCount);
-            var skillStr = (skills) skillInt;
+            var skill = (skills) rand.Next(Enum.GetNames(typeof(skills)).Length);
+            var challenge = (challenges) rand.Next(Enum.GetNames(typeof(challenges)).Length);
+            var cosplay = (cosplays) rand.Next(Enum.GetNames(typeof(challenges)).Length);
 
-            var rando = new Random();
-            var challengeCount = Enum.GetNames(typeof(challenges)).Length;
-            var challengeInt = rando.Next(challengeCount);
-            var challengeStr = (challenges) challengeInt;
-
-            var randow = new Random();
-            var cosplayCount = Enum.GetNames(typeof(cosplays)).Length;
-            var cosplayInt = randow.Next(cosplayCount);
-            var cosplayStr = (cosplays) cosplayInt;
-            
-            if (skillInt == 5)
+            switch (skill)
             {
-                Console.WriteLine("You are doing a {0} challenge run", challengeStr);
-            }
-            else if (skillInt == 6)
-            {
-                Console.WriteLine("You are doing a {0} cosplay run", cosplayStr);
-            }
-            else
-            {
-                Console.WriteLine("You are doing a standard run using {0} as your primary skill", skillStr);
+                case skills.Challenge:
+                    Console.WriteLine("You are doing a {0} challenge run", challenge);
+                    break;
+                case skills.Cosplay:
+                    Console.WriteLine("You are doing a {0} cosplay run", cosplay);
+                    break;
+                default: Console.WriteLine("You are doing a standard run using {0} as your primary skill", skill);
+                    break;
             }
         }
     }
